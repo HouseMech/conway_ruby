@@ -25,13 +25,20 @@ RSpec.describe 'Cell' do
       cell.live!
       expect(cell.alive).to eql true
     end
-  end
 
-  describe 'Game Logic' do
     it 'has neighbours' do
       results = double
       expect(board).to receive(:neighbours_of).with(50, 50).and_return(results)
       cell.neighbours
+    end
+
+    it 'has live neighbours' do
+      n1 = Cell.new(51, 50, board)
+      n1.live!
+      n2 = Cell.new(49, 50, board)
+      results = [n1, n2]
+      expect(cell).to receive(:neighbours).and_return(results)
+      expect(cell.live_neighbours).to eq [n1]
     end
   end
 end
