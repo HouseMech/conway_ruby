@@ -30,7 +30,7 @@ RSpec.describe 'Cell' do
   describe 'Game Logic' do
     it 'has neighbours' do
       results = double
-      expect(board).to receive(:neighbours).with(50, 50).and_return(results)
+      expect(board).to receive(:neighbours_of).with(50, 50).and_return(results)
       cell.neighbours
     end
   end
