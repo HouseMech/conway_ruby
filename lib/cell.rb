@@ -11,4 +11,16 @@ class Cell
     @alive = false
     @board = board
   end
+
+  def die!
+    @alive = false
+  end
+
+  def live!
+    @alive = true
+  end
+
+  def neighbours
+    []
+  end
 end
