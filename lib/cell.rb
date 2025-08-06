@@ -21,6 +21,6 @@ class Cell
   end
 
   def neighbours
-    []
+    board.neighbours_of(x_coord, y_coord)
   end
 end
