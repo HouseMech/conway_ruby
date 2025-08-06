@@ -68,13 +68,23 @@ RSpec.describe 'Cell' do
 
   describe 'Rule 3' do
     it 'dies if it has more than three live neighbours, as if by overpopulation' do
-
+      [4, 5, 6, 7, 8].each do |neighbours_count|
+        cell.live!
+        allow(cell).to receive(:live_neighbours_count).and_return(neighbours_count)
+        cell.rule3
+        expect(cell.alive).to eq false
+      end
     end
   end
 
   describe 'Rule 4' do
+    before do
+      cell.die!
+    end
     it 'revives if it has exactly 3 live neighbours, as if by reproduction' do
-
+      allow(cell).to receive(:live_neighbours_count).and_return(3)
+      cell.rule4
+      expect(cell.alive).to eq true
     end
   end
 end
