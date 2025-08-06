@@ -27,6 +27,13 @@ class Board
     neighbours.compact
   end
 
+  def change_cell_state(x_coord, y_coord, alive)
+    cell = cell_at(x_coord, y_coord)
+    return unless cell
+
+    alive ? cell.live! : cell.die!
+  end
+
   def oob(x_coord, y_coord)
     x_coord.negative? || x_coord > width - 1 || y_coord.negative? || y_coord > height - 1
   end
