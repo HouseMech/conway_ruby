@@ -3,7 +3,8 @@
 require_relative '../lib/cell'
 
 RSpec.describe 'Cell' do
-  let(:cell) { Cell.new(50, 50, board)}
+  let(:board) { double(:board) }
+  let(:cell) { Cell.new(50, 50, board) }
 
   describe 'Validations' do
     it 'has an x and y coordinate' do
@@ -12,7 +13,7 @@ RSpec.describe 'Cell' do
     end
 
     it 'is either alive or dead' do
-      cell.alive should be_an_instance_of Boolean
+      expect(([true, false].include? cell.alive)).to eql true
     end
   end
 end
