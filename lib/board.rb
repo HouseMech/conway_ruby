@@ -2,7 +2,7 @@
 
 # The game board for Conway's Game of life. Houses a grid of cells.
 class Board
-  attr_accessor :width, :height, :next_gen
+  attr_accessor :width, :height
 
   def initialize(width, height)
     @width = width
@@ -36,5 +36,23 @@ class Board
 
   def oob(x_coord, y_coord)
     x_coord.negative? || x_coord > width - 1 || y_coord.negative? || y_coord > height - 1
+  end
+
+  def empty_world
+    Array.new(width) do
+      Array.new(height) { nil }
+    end
+  end
+
+  def next_gen
+    new_world = empty_world
+    @cells.each do |col|
+      col.each do |cell|
+        dupe_cell = cell.dup
+        dupe_cell.apply_conway_rules
+        new_world[dupe_cell.x_coord][dupe_cell.y_coord] = dupe_cell
+      end
+    end
+    @cells = new_world
   end
 end

@@ -51,4 +51,11 @@ class Cell
   def rule4
     live! if !alive && live_neighbours_count == 3
   end
+
+  def apply_conway_rules
+    rule1
+    rule2
+    rule3
+    rule4
+  end
 end
