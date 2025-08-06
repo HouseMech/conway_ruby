@@ -41,6 +41,14 @@ RSpec.describe 'Board' do
 
   describe 'Next Gen' do
     it 'can call all of the conway rules' do
+      board.change_cell_state(0, 0, true)
+      board.change_cell_state(0, 1, true)
+      board.change_cell_state(1, 0, true)
+      board.next_gen()
+      expect(board.cell_at(0, 0).alive?).to eq true
+      expect(board.cell_at(0, 1).alive?).to eq true
+      expect(board.cell_at(1, 0).alive?).to eq true
+      expect(board.cell_at(1, 1).alive?).to eq true
     end
   end
 end
