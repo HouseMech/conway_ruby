@@ -41,5 +41,19 @@ RSpec.describe 'Cell' do
       expect(cell.live_neighbours).to eq [n1]
     end
   end
+
+  describe 'Rule 1' do
+    before do
+      cell.live!
+    end
+    it 'dies if it had less than 2 live neighbours, as if by underpopulation' do
+      [0, 1].each do |neighbours_count|
+        cell.live!
+        allow(cell).to receive(:live_neighbours_count).and_return(neighbours_count)
+        cell.rule1
+        expect(cell.alive).to eq false
+      end
+    end
+  end
 end
 # rubocop:enable Metrics/BlockLength
