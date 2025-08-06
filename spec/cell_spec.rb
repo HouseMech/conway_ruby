@@ -55,5 +55,27 @@ RSpec.describe 'Cell' do
       end
     end
   end
+  describe 'Rule 2' do
+    it 'lives on if it has 2 or 3 live neighbours and is also alive' do
+      [2, 3].each do |neighbours_count|
+        cell.live!
+        allow(cell).to receive(:live_neighbours_count).and_return(neighbours_count)
+        cell.rule2
+        expect(cell.alive).to eq true
+      end
+    end
+  end
+
+  describe 'Rule 3' do
+    it 'dies if it has more than three live neighbours, as if by overpopulation' do
+
+    end
+  end
+
+  describe 'Rule 4' do
+    it 'revives if it has exactly 3 live neighbours, as if by reproduction' do
+
+    end
+  end
 end
 # rubocop:enable Metrics/BlockLength
