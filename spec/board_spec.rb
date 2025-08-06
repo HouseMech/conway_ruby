@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require_relative '../lib/board'
-
+# rubocop:disable Metrics/BlockLength
 RSpec.describe 'Board' do
   let(:board) { Board.new(10, 20) }
 
@@ -30,5 +30,18 @@ RSpec.describe 'Board' do
       expect(neighbours).to be_kind_of(Array)
       expect(!neighbours.empty? && neighbours.length <= 8)
     end
+
+    it 'can make cells alive or dead' do
+      board.change_cell_state(0, 0, true)
+      expect(board.cell_at(0, 0).alive?).to eq true
+      board.change_cell_state(0, 0, false)
+      expect(board.cell_at(0, 0).alive?).to eq false
+    end
+  end
+
+  describe 'Next Gen' do
+    it 'can call all of the conway rules' do
+    end
   end
 end
+# rubocop:enable Metrics/BlockLength
