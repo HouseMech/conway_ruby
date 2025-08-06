@@ -12,6 +12,10 @@ class Cell
     @board = board
   end
 
+  def alive?
+    alive
+  end
+
   def die!
     @alive = false
   end
@@ -22,5 +26,21 @@ class Cell
 
   def neighbours
     board.neighbours_of(x_coord, y_coord)
+  end
+
+  def live_neighbours
+    neighbours.select(&:alive?)
+  end
+
+  def live_neighbours_count
+    live_neighbours.count
+  end
+
+  def rule1
+    die! if live_neighbours_count < 2
+  end
+
+  def rule2
+    live! if live_neighbours_count == 2 || live_neighbours_count == 3
   end
 end
