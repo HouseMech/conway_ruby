@@ -5,9 +5,9 @@
 class Cell
   attr_accessor :x_coord, :y_coord, :alive, :board
 
-  def initialize(x,y,board)
-    @x_coord = x
-    @y_coord = y
+  def initialize(x_coord, y_coord, board)
+    @x_coord = x_coord
+    @y_coord = y_coord
     @alive = false
     @board = board
   end
