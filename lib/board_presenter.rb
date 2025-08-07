@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Draws the display for Conway's game of life
 class BoardPresenter
   attr_accessor :board, :alive_colour, :dead_colour
 
