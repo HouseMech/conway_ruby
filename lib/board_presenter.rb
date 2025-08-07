@@ -11,6 +11,7 @@ class BoardPresenter
   end
 
   def draw
+    clear_terminal
     output = ''
     0.upto(board.height - 1) do |y|
       0.upto(board.width - 1) do |x|
@@ -20,7 +21,7 @@ class BoardPresenter
       end
       output += "\n"
     end
-    output
+    print output
   end
 end
 
