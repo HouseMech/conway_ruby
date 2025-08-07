@@ -21,7 +21,7 @@ class BoardPresenter
       end
       output += "\n"
     end
-    print output
+    output
   end
 end
 

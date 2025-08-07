@@ -32,7 +32,8 @@ start_cells.each do |x, y|
 end
 
 while true do
-  board_presenter.draw
+  game = board_presenter.draw
+  print game
   sleep(0.2)
   board.next_gen
 end
