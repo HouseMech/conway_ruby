@@ -41,7 +41,7 @@ class Cell
   end
 
   def rule2
-    live! if live_neighbours_count == 2 || live_neighbours_count == 3
+    live! if (live_neighbours_count == 2 || live_neighbours_count == 3) && alive?
   end
 
   def rule3
